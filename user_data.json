@@ -1,8 +1,8 @@
 {
-    "activation": false,
-    "name": "r",
-    "key_hash1": 25176297,
-    "key_hash2": 56029974,
+    "activation": true,
+    "name": "roy",
+    "key_hash1": 56713398,
+    "key_hash2": 1912370,
     "password_hash1": 847490,
     "password_hash2": 847490
 }

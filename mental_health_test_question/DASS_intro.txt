@@ -1,0 +1,6 @@
+To help you better understand your mental health, we use the Depression Anxiety Stress Scales (DASS),
+a set of standardized tools developed by psychologists to assess mental states related to depression, anxiety, and stress.
+Before you begin, please choose a test:
+1. DASS-42: A comprehensive assessment with 42 questions measuring depression, anxiety, and stress.
+2. DASS-Y: A shorter version designed for younger users in the age range 8-17 or quicker screening.
+3. Exits

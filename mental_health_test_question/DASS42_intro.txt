@@ -1,0 +1,8 @@
+Please read each statement and enter a number 0, 1, 2 or 3 which indicates how much the statement
+applied to you over the past week. There are no right or wrong answers. Do not spend too much time
+on any statement.
+The rating scale is as follows:
+0 Did not apply to me at all
+1 Applied to me to some degree, or some of the time
+2 Applied to me to a considerable degree, or a good part of time
+3 Applied to me very much, or most of the time

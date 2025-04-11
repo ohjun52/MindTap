@@ -1,0 +1,7 @@
+We would like to find out how you have been feeling in THE PAST WEEK. There are some
+sentences below. Please enter the number which best shows how TRUE each sentence was of
+you during the past week. There are no right or wrong answers.
+If the statement was NOT TRUE of you (in the past week), enter 0.
+If the statement was A LITTLE TRUE of you, enter 1.
+If the statement was FAIRLY TRUE of you, enter 2.
+If the statement was VERY TRUE of you, enter 3.
