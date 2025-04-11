@@ -12,14 +12,10 @@ def _string_hash(password, mod):
 	return res #use string hash to convert password to integer
 
 def _create_key():
-	return (f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}"
-			f"{chr(random.randint(33, 126))}{chr(random.randint(33, 126))}") #create a random key
+	res = ""
+	for i in range (20):
+		res += chr(random.randint(33, 126)) #use random to get a random number and convert to ascii char
+	return res #create a random key
 
 def _register_account():
 	user_data["name"] = input("Please enter your username: ")
@@ -31,7 +27,7 @@ def _register_account():
 	key = _create_key()
 	user_data["key_hash1"] = _string_hash(key, _mod1)
 	user_data["key_hash2"] = _string_hash(key, _mod2)  #get and save the hash of key
-	print("Your key is: " + key)
+	print("Your key is: " + key + '\n')
 	user_data["activation"] = True #register complete
 
 def _login_account():
@@ -39,10 +35,10 @@ def _login_account():
 	hash1 = _string_hash(password, _mod1)
 	hash2 = _string_hash(password, _mod2) #the hash value of password user input
 	if hash1 == user_data["password_hash1"] and hash2 == user_data["password_hash2"]:
-		print("Welcome back! " + user_data["name"])
+		print("Welcome back! " + user_data["name"] + '\n')
 		return True
 	else:
-		print("Wrong password!")
+		print("Wrong password!\n")
 		return False
 
 def _forget_password():
@@ -55,19 +51,21 @@ def _forget_password():
 		hash2 = _string_hash(password, _mod2)
 		user_data["password_hash1"] = hash1
 		user_data["password_hash2"] = hash2 #reset password
-		print("Your password has been changed successfully!")
+		print("Your password has been changed successfully!\n")
 		return True
 	else:
-		print("Wrong key!")
+		print("Wrong key!\n")
 		return False
 
 def _cancel_account():
-	check = input("Type \"yes\" to confirm, or just press Enter to cancel:")
+	check = input("Type \"yes\" to confirm, or just press Enter to cancel: ")
 	if check == "yes":
 		user_data["activation"] = False  # change to unregister state
 		print("Your account has been cancelled successfully!")
 		return True
-	return False
+	else:
+		print("Cancel cancelled!\n")
+		return False
 
 def login():
 	if not user_data["activation"]:
@@ -79,7 +77,7 @@ def login():
 		print("2. Forget password")
 		print("3. Exit")
 		print("4. Cancel account") #give user choices
-		choice =  input("Please enter your choice:")
+		choice = input("Enter the number of your choice: ")
 		if choice == "1":
 			if _login_account():
 				res = 1
@@ -93,6 +91,6 @@ def login():
 				res = 2
 				break
 		else :
-			print("Invalid choice!")
+			print("Invalid choice!\n")
 	json_operate.save_json("user_data.json", user_data) #save the change of user data
 	return res
