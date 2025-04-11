@@ -31,7 +31,7 @@ def get_mark():
 	date = datetime.now().strftime("%Y-%m-%d") #get the date today
 	print("Today is " + date)
 	if date in mark_data["history"]:
-		print("You have already scored today.\n")
+		print("You have already scored today.")
 		return #return if user have marked today
 	mark = int(input("Please enter your mood score today (0-10): "))
 	mark_data["history"][date] =  mark #add the mark today to the history

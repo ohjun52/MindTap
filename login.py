@@ -70,7 +70,7 @@ def _cancel_account():
 def login():
 	if not user_data["activation"]:
 		_register_account()  #check did the user register
-	print(f"Hi, {user_data["name"]}!")
+	print(f"Hi, {user_data['name']}!")
 	res = 0 #the result of login
 	while True: #loop until login success or exit
 		print("1. Login")
