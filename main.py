@@ -5,9 +5,10 @@ from mental_health_test import mental_health_test_menu
 
 def print_main_menu():
 	while True:
-		print("1. Historical score data")
+		print("1. Historical mood score data")
 		print("2. mental health test")
 		choice = input("Enter the number of your choice: ")
+		print()
 		if choice == "1":
 			mark_analysis.historical_mark_data_menu()
 		elif choice == "2":

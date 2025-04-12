@@ -1,8 +1,8 @@
 import random
-import json_operate
+import general_tools
 _mod1 = 100000007
 _mod2 = 100000921  # two big prime for string hash mod
-user_data = json_operate.read_json("user_data.json")  # get the data from user_data.json
+user_data = general_tools.read_json("user_data.json")  # get the data from user_data.json
 
 def _string_hash(password, mod):
 	res = 0
@@ -78,6 +78,7 @@ def login():
 		print("3. Exit")
 		print("4. Cancel account")  # give user choices
 		choice = input("Enter the number of your choice: ")
+		print()
 		if choice == "1":
 			if _login_account():
 				res = 1
@@ -92,5 +93,5 @@ def login():
 				break
 		else:
 			print("Invalid choice!\n")
-	json_operate.save_json("user_data.json", user_data)  # save the change of user data
+	general_tools.save_json("user_data.json", user_data)  # save the change of user data
 	return res
