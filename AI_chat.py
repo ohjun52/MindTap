@@ -2,7 +2,7 @@ import os
 import general_tools
 from google import genai
 from google.genai import types
-client = genai.Client(api_key = os.environ["api_key"])
+client = genai.Client(api_key = os.environ["API_KEY"])
 
 def ai_chat_menu():
 	chat = client.chats.create(
