@@ -1,13 +1,16 @@
+
 import os
 from datetime import datetime
 import general_tools
+
+# Define order for diary navigation
 order = ["year", "month", "day"]
 path_today = "user_diary/" + datetime.now().strftime("%Y/%m/%d")
 
 class Queue:
-	
+	# Queue implementation for AC automaton
 	max_size = 10005
-	
+
 	def __init__(self):
 		self.queue = [0] * Queue.max_size
 		self.tail = 0
@@ -27,7 +30,7 @@ class Queue:
 
 
 class AcAutomata:
-
+	# Aho-Corasick automaton for sensitive word detection
 	root = 1
 	sigma_size = 30
 	max_node = Queue.max_size
@@ -40,6 +43,7 @@ class AcAutomata:
 
 	@staticmethod
 	def _index(char):
+		# Convert character to index for trie
 		if char == ' ':
 			return 0
 		elif char == '\'':
@@ -50,6 +54,7 @@ class AcAutomata:
 			return ord(char.lower()) - ord('a') + 3
 
 	def _insert(self, string):
+		# Insert a word into the trie
 		u = AcAutomata.root
 		for i in string:
 			idx = self._index(i)
@@ -60,6 +65,7 @@ class AcAutomata:
 		self.end[u] = True
 
 	def _build_fail(self):
+		# Build failure links for AC automaton
 		q = Queue()
 		for i in range(self.sigma_size):
 			if self.trie[AcAutomata.root][i]:
@@ -70,7 +76,7 @@ class AcAutomata:
 		while not q.empty():
 			u = q.front()
 			q.pop()
-			for i in range(AcAutomata.sigma_size):
+			for i in range(self.sigma_size):
 				if self.trie[u][i]:
 					self.fail[self.trie[u][i]] = self.trie[self.fail[u]][i]
 					q.push(self.trie[u][i])
@@ -78,6 +84,7 @@ class AcAutomata:
 					self.trie[u][i] = self.trie[self.fail[u]][i]
 
 	def _find(self, string):
+		# Find sensitive words in input string
 		u = AcAutomata.root
 		pos = 0
 		for i in string:
@@ -91,13 +98,14 @@ class AcAutomata:
 		return 0
 
 	def init_ac_automata(self):
+		# Initialize AC automaton with sensitive words
 		word_list = general_tools.read_txt_line("sensitive_words_list.txt")
 		for i in word_list:
 			self._insert(i.strip())
 		self._build_fail()
 
-
 	def find_sensitive_word(self, string):
+		# Check for sensitive words and handle user response
 		res = self._find(string.lower())
 		if res:
 			print(f"A sensitive word was found end at character {res} in your diary. If you're feeling down, "
@@ -111,6 +119,7 @@ class AcAutomata:
 		return True
 
 def _add_diary():
+	# Add or update diary entry for today
 	if os.path.exists(path_today):
 		print("Here is your diary entry for today: ")
 		print(general_tools.read_txt(path_today + "/content.txt"))
@@ -128,6 +137,7 @@ def _add_diary():
 	print()
 
 def _write_diary():
+	# Main diary writing interface
 	while True:
 		print("1. Add content to your diary")
 		print("2. Rewrite your diary")
@@ -149,8 +159,8 @@ def _write_diary():
 		else:
 			print("Invalid choice!\n")
 
-
 def _view_diary(file_path = "user_diary/", cnt = 0):
+	# Navigate and view diary entries
 	if cnt == 3:
 		print(general_tools.read_txt(file_path + "content.txt"))
 		print()
@@ -168,6 +178,7 @@ def _view_diary(file_path = "user_diary/", cnt = 0):
 		_view_diary(file_path + name_list[int(file) - 1] + '/', cnt + 1)
 
 def diary_menu():
+	# Main diary menu interface
 	while True:
 		print("1. Write your diary")
 		print("2. View your daily diary")
@@ -185,5 +196,5 @@ def diary_menu():
 			break  # exit
 		else:
 			print("Invalid choice!")
-
+# Initialize AC automaton for sensitive word detection
 check_sensitive_word = AcAutomata()
