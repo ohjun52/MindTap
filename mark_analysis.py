@@ -28,7 +28,7 @@ def mark_init():
 	general_tools.save_json("mark_data.json", mark_data)
 
 def get_mark():
-	date = str(datetime.today())  # get the date today
+	date = str(datetime.now().strftime("%Y-%m-%d"))  # get the date today
 	print("Today is " + date)
 	if date in mark_data["history"]:
 		print("You have already scored today.\n")
