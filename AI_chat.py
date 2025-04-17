@@ -16,10 +16,10 @@ def ai_chat_menu():
 	while True:
 		# Get user input and process it
 		question = input("Please ask any question about your mental health (enter 0 to exit): ")
+		print()
 		if question == "0":
 			break
 		else:
 			# Send message to AI and display response
 			response = chat.send_message(question)
-			print()
 			print(response.text)
