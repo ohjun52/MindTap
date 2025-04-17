@@ -1,7 +1,8 @@
+import os
 import general_tools
 from google import genai
 from google.genai import types
-client = genai.Client(api_key = general_tools.read_json("gemini_api.json")["api_key"])
+client = genai.Client(api_key = os.environ["api_key"])
 
 def ai_chat_menu():
 	chat = client.chats.create(
@@ -13,8 +14,6 @@ def ai_chat_menu():
 		if question == "0":
 			break
 		else:
-			response = chat.send_message_stream(question)
+			response = chat.send_message(question)
 			print()
-			for chuck in response:
-				print(chuck.text, end = "")
-			print()
+			print(response.text)

@@ -100,13 +100,14 @@ class AcAutomata:
 	def find_sensitive_word(self, string):
 		res = self._find(string.lower())
 		if res:
-			print(f"A sensitive word was found at character {res} in your entry. If you're feeling down, "
+			print(f"A sensitive word was found end at character {res} in your diary. If you're feeling down, "
 				  f"Don't worry — we're here to support you.")
 			choice = input("if you want to rewrite your entry, type \"yes\", otherwise we will keep your entry: ")
 			print()
 			if choice == "yes":
 				return False
-			else: return True
+			else: 
+				return True
 		return True
 
 def _add_diary():
