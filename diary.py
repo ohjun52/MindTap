@@ -89,7 +89,7 @@ class AcAutomata:
 		pos = 0
 		for i in string:
 			pos += 1
-			if i != ' ' and not i.islower():
+			if i != ' ' and i != '\'' and i != '-' and not i.islower():
 				u = 0
 				continue
 			u = self.trie[u][self._index(i)]

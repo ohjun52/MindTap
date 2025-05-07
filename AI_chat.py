@@ -1,9 +1,7 @@
-
 import os
 import general_tools
 from google import genai
 from google.genai import types
-
 # Initialize Google Generative AI client with API key
 client = genai.Client(api_key = os.environ["API_KEY"])
 

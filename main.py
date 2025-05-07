@@ -1,5 +1,5 @@
-import mark_analysis
 import diary
+import mark_analysis
 from login import login
 from AI_chat import ai_chat_menu
 from mental_health_test import mental_health_test_menu
@@ -29,8 +29,8 @@ def print_main_menu():
 
 login_res = login()  # get the result of login
 if login_res == 1:
-	diary.check_sensitive_word.init_ac_automata()
-	mark_analysis.get_mark()
+	diary.check_sensitive_word.init_ac_automata()  # initialize the AC automaton for sensitive word detection
+	mark_analysis.get_mark()  # get the mark of today
 	print_main_menu()
 elif login_res == 2:
 	mark_analysis.mark_init()

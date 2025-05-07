@@ -5,7 +5,7 @@ mark_data = general_tools.read_json("mark_data.json")
 
 def _longest_increasing_score():
 	smallest_value = [0x3f3f3f] * (len(mark_data["sum"]) + 1)  # initialize with INF
-	smallest_value[0] = 0 #
+	smallest_value[0] = 0
 	max_value = 0
 	latest_value = 0
 	for i in mark_data["history"].values():
@@ -60,4 +60,5 @@ def historical_mark_data_menu():
 		elif choice == "2":
 			day = general_tools.get_int("Please enter the period you want to view (1-7):")
 			print(f"The average mood score for the past {day} days is {_avg_mark(day)}\n")  # get average mark
-		else: break # exit
+		else: 
+			break # exit
